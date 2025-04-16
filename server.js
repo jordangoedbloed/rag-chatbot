@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config({ path: '../.env' });
+dotenv.config();
 
 import express from "express";
 import cors from "cors";
@@ -40,7 +40,7 @@ const embeddings = new OpenAIEmbeddings({
 
 // Prepare vectorstore
 async function prepareData() {
-  const loader = new TextLoader(path.resolve(__dirname, "..", "documents", "voorbeeld.txt"));
+  const loader = new TextLoader(path.resolve(__dirname, "documents", "voorbeeld.txt"));
   const rawDocs = await loader.load();
   const splitter = new RecursiveCharacterTextSplitter({ chunkSize: 500, chunkOverlap: 50 });
   const splitDocs = await splitter.splitDocuments(rawDocs);
